@@ -11,10 +11,6 @@ token = app.config.get("API_KEY");
 
 @app.route("/", methods = ['GET', 'POST'])
 def regions():
-    selectedRegion = ''
-    if (request.method == 'POST'):
-        selectedRegion = request.json.get('region')
-
     regions = requests.get(url + '/regions').json()
     return render_template('home.html', regions=regions)
 

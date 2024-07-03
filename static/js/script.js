@@ -6,17 +6,9 @@ function selectRegion() {
             regions.forEach(regionElement => {
                 regionElement.classList.remove('active')
             });
-            fetch('/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    'region': region.innerText.replace(/\s/g, '')
-                })
-            }).then(
-                region.classList.add('active')
-            );
+
+            region.classList.add('active');
+            localStorage.setItem('region', region.innerText);
         });
     });
 }
