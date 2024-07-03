@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>ZoneTracker</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    </head>
+    <body class="text-light">
+        <div class="d-flex" id="wrapper">
+            <!-- Sidebar-->
+            <div class="border-end " id="sidebar-wrapper">
+                <div class="sidebar-heading border-bottom ">ZoneTracker</div>
+                <div class="list-group list-group-flush">
+                    <a class="list-group-item list-group-item-action p-3" href="#!">Emissions</a>
+                    <a class="list-group-item list-group-item-action p-3" href="#!">Auction</a>
+                    <a class="list-group-item list-group-item-action p-3" href="#!">Characters</a>
+                    <a class="list-group-item list-group-item-action p-3" href="#!">Clans</a>
+                </div>
+            </div>
+            <!-- Page content wrapper-->
+            <div id="page-content-wrapper">
+                <!-- Navbar-->
+                <nav class="navbar navbar-expand-lg border-bottom">
+                    <div class="container-fluid">
+                        <button class="btn shadow-none" id="sidebarToggle"><i class="bi bi-list"></i></button>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="regionDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Region</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        {% for region in regions %}
+                                        {% if region.id == "EU" or region.id == "RU" %}
+                                        {% set imgClass = "bi bi-globe-europe-africa" %}
+                                        {% elif region.id == "NA" %}
+                                        {% set imgClass = "bi bi-globe-americas" %}
+                                        {% elif region.id == "SEA" %}
+                                        {% set imgClass = "bi bi-globe-central-south-asia" %}
+                                        {% endif %}
+                                        <li><a href="#" class="dropdown-item" id="regionSelect"><i class="{{ imgClass }}"></i> {{ region.id }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#!">Link</a></li>                                
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <!-- Page content-->
+                <div class="container-fluid">
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>
