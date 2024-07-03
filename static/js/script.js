@@ -2,13 +2,16 @@ function selectRegion() {
     const regions = document.querySelectorAll('#regionSelect');
 
     regions.forEach(region => {
+        if (region.innerText.replace(/\s/g, '') == localStorage.getItem('region')) {
+            region.classList.add('active');
+        }
         region.addEventListener('click', () => {
             regions.forEach(regionElement => {
                 regionElement.classList.remove('active')
             });
 
             region.classList.add('active');
-            localStorage.setItem('region', region.innerText);
+            localStorage.setItem('region', region.innerText.replace(/\s/g, ''));
         });
     });
 }
