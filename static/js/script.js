@@ -16,14 +16,14 @@ function selectRegion() {
 
             region.classList.add('active');
             sessionStorage.setItem('region', region.innerText.replace(/\s/g, ''));
+
+            document.getElementById('characters').setAttribute('href', `/${sessionStorage.getItem('region')}/characters`);
         });
     });
 }
 
 window.addEventListener('DOMContentLoaded', event => {
     selectRegion();
-
-    document.getElementById('characters').setAttribute('href', `/${sessionStorage.getItem('region')}/characters`);
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');
