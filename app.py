@@ -9,14 +9,16 @@ url = 'https://dapi.stalcraft.net'
 
 token = app.config.get("API_KEY");
 
-@app.route("/", methods = ['GET', 'POST'])
-def regions():
+@app.route("/", methods = ['GET'])
+def home():
     regions = requests.get(url + '/regions').json()
     return render_template('home.html', regions=regions)
 
 @app.route("/<region>/characters", methods = ['GET'])
 def characters(region):
-    return requests.get(url + '/' + region + '/characters', headers={"Authorization":"Bearer " + token}).json()
+    # url + '/' + region + '/characters'
+    characters = requests.get(f'{url}/{region}/characters', headers={"Authorization": f'Bearer {token}'}).json()
+    return render_template('characters.html', characters = characters)
 
 @app.route("/<region>/characters/<name>")
 def character(region, name):

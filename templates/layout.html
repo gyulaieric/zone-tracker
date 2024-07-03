@@ -14,11 +14,11 @@
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end " id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom ">ZoneTracker</div>
-                <div class="list-group list-group-flush">
+                <div class="sidebar-heading border-bottom "><a class="nav-link" href="{{ url_for('home') }}">ZoneTracker</a></div>
+                <div class="list-group list-group-flush" id="sidebar-buttons">
                     <a class="list-group-item list-group-item-action p-3" href="#!">Emissions</a>
                     <a class="list-group-item list-group-item-action p-3" href="#!">Auction</a>
-                    <a class="list-group-item list-group-item-action p-3" href="#!">Characters</a>
+                    <a class="list-group-item list-group-item-action p-3" id="characters" href="#!">Characters</a>
                     <a class="list-group-item list-group-item-action p-3" href="#!">Clans</a>
                 </div>
             </div>
