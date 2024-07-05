@@ -1,6 +1,34 @@
 {% extends 'layout.html' %}
 {% block content %}
-    {% for character in characters %}
-    <p>{{ character }}</p>
-    {% endfor %}
+    <div class="container">
+        <input type="text" id="search" onkeyup="search()" placeholder="Search">
+        <table class="table table-bordered">
+            <tr>
+                <th scope="col">Character details</th>
+                <th scope="col">Clan details</th>
+            </tr>
+            <tbody id="charactersTable">
+                {% for character in characters %}
+                <tr>
+                    <td id="userDetails">
+                        <p><b>id: </b>{{ character.information.id }}</p>
+                        <p id="username"><b>username: </b>{{ character.information.name }}</p>
+                        <p><b>faction: </b>{{ character.clan.info.alliance }}</p>
+                        <p><b>created at: </b>{{ character.information.creationTime }}</p>
+                    </td>
+                    <td>
+                        <p><b>id: </b>{{ character.clan.info.id }}</p>
+                        <p><b>name: </b>{{ character.clan.info.name }}</p>
+                        <p><b>tag: </b>#{{ character.clan.info.tag }}</p>
+                        <p><b>level: </b>{{ character.clan.info.level }}</p>
+                        <p><b>leader: </b>{{ character.clan.info.leader }}</p>
+                        <p><b>members: </b>{{ character.clan.info.memberCount }}</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/characters.js') }}"></script>
 {% endblock %}
