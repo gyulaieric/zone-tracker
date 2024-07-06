@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+    <table class="table table-bordered">
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody>
+            <tr>
+                <td>
+                    <p><b>Current start:</b></p>
+                </td>'
+                <td>
+                    <p>{{ emission.currentStart }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>Previous start:</b></p>
+                </td>'
+                <td>
+                    <p>{{ emission.previousEnd }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p><b>Previous end:</b></p>
+                </td>'
+                <td>
+                    <p>{{ emission.previousEnd }}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

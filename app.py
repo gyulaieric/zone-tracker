@@ -7,7 +7,7 @@ app.config.from_pyfile('config.py')
 
 url = 'https://dapi.stalcraft.net'
 
-token = app.config.get("API_KEY");
+token = app.config.get("API_KEY")
 
 @app.route("/", methods = ['GET'])
 def home():
@@ -26,4 +26,5 @@ def character(region, name):
 
 @app.route("/<region>/emission")
 def emission(region):
-    return (requests.get('https://dapi.stalcraft.net/' + region + '/emission', headers={"Authorization": "Bearer " + token})).json()
+    emission = requests.get('https://dapi.stalcraft.net/' + region + '/emission', headers={"Authorization": "Bearer " + token}).json()
+    return render_template('emission.html', emission=emission)
