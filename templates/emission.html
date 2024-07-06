@@ -1,6 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 <div class="container">
+    <h1>{{ emission.region }}</h1>
     <table class="table table-bordered">
         <tr>
             <th>Current start</th>
@@ -10,16 +11,18 @@
         <tbody>
             <tr>
                 <td>
-                    <p>{{ emission.currentStart }}</p>
+                    <p>{{ emission.data.currentStart }}</p>
                 </td>
                 <td>
-                    <p>{{ emission.previousEnd }}</p>
+                    <p>{{ emission.data.previousEnd }}</p>
                 </td>
                 <td>
-                    <p>{{ emission.previousEnd }}</p>
+                    <p>{{ emission.data.previousEnd }}</p>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<script src="/static/js/emission.js"></script>
 {% endblock %}

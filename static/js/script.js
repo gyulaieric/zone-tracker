@@ -5,8 +5,13 @@ function selectRegion() {
         alert('Please select a region');
     }
 
+    let regionList = []
+
     regions.forEach(region => {
-        if (region.innerText.replace(/\s/g, '') == sessionStorage.getItem('region')) {
+        regionText = region.innerText.replace(/\s/g, '');
+
+        regionList.push(regionText);
+        if (regionText == sessionStorage.getItem('region')) {
             region.classList.add('active')
         }
         region.addEventListener('click', () => {
@@ -15,12 +20,11 @@ function selectRegion() {
             });
 
             region.classList.add('active');
-            sessionStorage.setItem('region', region.innerText.replace(/\s/g, ''));
-
-            document.getElementById('characters').setAttribute('href', `/${sessionStorage.getItem('region')}/characters`);
-            document.getElementById('emission').setAttribute('href', `/${sessionStorage.getItem('region')}/emission`);
+            sessionStorage.setItem('region', regionText);
         });
     });
+
+    document.getElementById('characters').setAttribute('href', `/${sessionStorage.getItem('region')}/characters`);
 }
 
 window.addEventListener('DOMContentLoaded', event => {

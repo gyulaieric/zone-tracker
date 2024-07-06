@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% for emission in emissions %}
+    <div class="container">
+        <h3>{{ emission.region.id }}</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>Current start</th>
+                <th>Previous start</th>
+                <th>Previous end</th>
+            </tr>
+            <tbody>
+                <tr>
+                    <td>
+                        <p>{{ emission.emissionData.currentStart }}</p>
+                    </td>
+                    <td>
+                        <p>{{ emission.emissionData.previousEnd }}</p>
+                    </td>
+                    <td>
+                        <p>{{ emission.emissionData.previousEnd }}</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+{% endblock %}

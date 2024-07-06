@@ -23,7 +23,17 @@ def characters(region):
 def character(region, name):
     return requests.get(url + '/' + region + '/chaaracter/by-name/' + name + '/profile', headers={"Authorization":"Bearer " + token}).json();
 
-@app.route("/<region>/emission")
-def emission(region):
-    emission = requests.get('https://dapi.stalcraft.net/' + region + '/emission', headers={"Authorization": "Bearer " + token}).json()
-    return render_template('emission.html', emission=emission)
+@app.route("/emissions")
+def emissions():
+    emissions = []
+
+    regions = requests.get(url + '/regions').json()
+
+    for region in regions:
+        data = {
+            "region": region,
+            "emissionData": requests.get(f'https://dapi.stalcraft.net/{region}/emission', headers={"Authorization": "Bearer " + token}).json()
+        }
+        emissions.append(data)
+
+    return render_template('emissions.html', emissions=emissions)   
