@@ -18,14 +18,13 @@ function selectRegion() {
             sessionStorage.setItem('region', region.innerText.replace(/\s/g, ''));
 
             document.getElementById('characters').setAttribute('href', `/${sessionStorage.getItem('region')}/characters`);
+            document.getElementById('emission').setAttribute('href', `/${sessionStorage.getItem('region')}/emission`);
         });
     });
 }
 
 window.addEventListener('DOMContentLoaded', event => {
     selectRegion();
-
-    document.getElementById('emission').setAttribute('href', `/${sessionStorage.getItem('region')}/emission`);
 
     // Toggle the side navigation
     const sidebarToggle = document.body.querySelector('#sidebarToggle');

@@ -16,7 +16,6 @@ def home():
 
 @app.route("/<region>/characters", methods = ['GET'])
 def characters(region):
-    # url + '/' + region + '/characters'
     characters = requests.get(f'{url}/{region}/characters', headers={"Authorization": f'Bearer {token}'}).json()
     return render_template('characters.html', characters = characters)
 
