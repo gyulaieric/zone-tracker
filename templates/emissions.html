@@ -2,7 +2,14 @@
 {% block content %}
     {% for emission in emissions %}
     <div class="container">
-        <h3>{{ emission.region.id }}</h3>
+        {% if emission.region.id == "EU" or emission.region.id == "RU" %}
+        {% set imgClass = "bi bi-globe-europe-africa" %}
+        {% elif emission.region.id == "NA" %}
+        {% set imgClass = "bi bi-globe-americas" %}
+        {% elif emission.region.id == "SEA" %}
+        {% set imgClass = "bi bi-globe-central-south-asia" %}
+        {% endif %}
+        <h3><i class="{{ imgClass }}"></i> {{ emission.region.id }}</h3>
         <table class="table table-bordered">
             <tr>
                 <th>Current start</th>
